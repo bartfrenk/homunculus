@@ -1,6 +1,6 @@
 (ns clj-bandit.core-test
   (:require [clojure.test :refer :all]
-            [clj-bandit.core :refer :all]))
+            [homunculus.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

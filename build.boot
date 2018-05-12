@@ -4,7 +4,10 @@
 (set-env! :resource-paths #{"resources" "src"}
           :source-paths   #{"test"}
           :dependencies   '[[org.clojure/clojure "1.9.0"]
-                            [adzerk/boot-test "1.2.0" :scope "test"]])
+                            [kixi/stats "0.4.0"]
+                            [adzerk/boot-test "1.2.0" :scope "test"]
+                            [incanter "1.5.7"]])
+
 
 (task-options!
  aot {:namespace   #{'bandit.core}}
