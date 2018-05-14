@@ -1,7 +1,7 @@
 (def project 'clj-bandit)
 (def version "0.1.0-SNAPSHOT")
 
-(set-env! :resource-paths #{"resources" "src"}
+(set-env! :resource-paths #{"src"}
           :source-paths   #{"test"}
           :dependencies   '[[org.clojure/clojure "1.9.0"]
                             [kixi/stats "0.4.0"]
@@ -26,11 +26,5 @@
   [d dir PATH #{str} "the set of directories to write to (target)."]
   (let [dir (if (seq dir) dir #{"target"})]
     (comp (aot) (pom) (uber) (jar) (target :dir dir))))
-
-(deftask run
-  "Run the project."
-  [a args ARG [str] "the arguments for the application."]
-  (require '[bandit.core :as app])
-  (apply (resolve 'app/-main) args))
 
 (require '[adzerk.boot-test :refer [test]])
