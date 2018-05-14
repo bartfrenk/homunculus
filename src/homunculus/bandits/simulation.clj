@@ -1,6 +1,6 @@
 (ns homunculus.bandits.simulation
   (:require [incanter.charts :as c]
-            [homunculus.bandits.core :refer [select-action update-belief]]))
+            [homunculus.bandits.core :refer [select-action update-belief*]]))
 
 (defprotocol ^:no-doc Environment
   (generate-context [this])
@@ -20,10 +20,12 @@
   ([this] (max-expected-reward* this nil))
   ([this ctx] (max-expected-reward* this ctx)))
 
-
-
 (defn simulate
-  "Runs a single simulation of the agent `agent` in the environment `environment`."
+  "Runs a single simulation of the agent `agent` in the environment
+  `environment`. The return value of this function the trace of the simulation
+  as a lazy list. Each item in the trace is a map which contains information on
+  a single step of the simulation. By default, the keys in the map
+  are `:action`, `:reward` and `:context`."
   [agent env & flags]
   (let [flag-set (set flags)
         ctx (generate-context env)
@@ -33,7 +35,7 @@
       (cons (cond-> {:action act :reward rew}
               (not (flag-set :no-context)) (assoc :context ctx)
               (flag-set :agent) (assoc :agent agent))
-            (apply simulate (update-belief agent ctx act rew) env flags)))))
+            (apply simulate (update-belief* agent ctx act rew) env flags)))))
 
 
 (defn regret

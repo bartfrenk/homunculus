@@ -16,7 +16,7 @@
   (get-estimate [this] mean))
 
 
-(defn new-sample-mean
+(defn sample-mean
   "Create a fresh sequential estimator for the sample mean."
   []
   (->SampleMean 0 0))
