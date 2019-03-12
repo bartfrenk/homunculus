@@ -1,0 +1,9 @@
+#kaocha/v1
+{:tests [{:id :unit
+          :test-paths ["test"]
+          :source-paths ["src"]
+          :ns-patterns ["-test$"]}]
+ :plugins [:kaocha.plugin/cloverage
+           :kaocha.plugin/junit-xml]
+ :cloverage/opts {}
+ :kaocha.plugin.junit-xml/target-file "target/junit.xml"}
