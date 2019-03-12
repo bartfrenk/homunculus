@@ -33,7 +33,7 @@
         (c/add-lines xs regret-mixed :series-label "Epsilon-Greedy")
         (i/view))))
 
-#_(time (let [env (b/bernoulli-env {:a 0.2
-                                    :b 0.15
-                                    :c 0.1})]
-          (compare-strategies-bernoulli env {:horizon 2000 :samples 1000})))
+;; (time (let [env (b/bernoulli-env {:a 0.02
+;;                                   :b 0.015
+;;                                   :c 0.01})]
+;;         (compare-strategies-bernoulli env {:horizon 2000 :samples 100})))
